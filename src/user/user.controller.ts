@@ -3,10 +3,10 @@ import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
   @Get()
   getAll() {
-    this.userService.getUsers();
+    return [{ id: 1, 'name': 'root', 'email': 'root@example.com' }, { id: 2, 'name': 'tamar', 'email': 'tamar@example.com' }];
   }
 }
