@@ -16,17 +16,18 @@ export class SystemController {
 
   @Post()
   createSystem(@Body() newSystem: System) {
-    this.systemService.createSystem(newSystem);
+    //מידלוואר
+    return this.systemService.createSystem(newSystem);
   }
 
   @Put(':id')
   updateSystem(@Param('id') systemId: string, @Body() updateSystem: System) {
-    this.systemService.updateSystem(systemId, updateSystem);
+    return this.systemService.updateSystem(systemId, updateSystem);
   }
 
   @Delete(':id')
   deleteSystem(@Param('id') systemId: string) {
-    this.systemService.deleteSystem(systemId);
+    return this.systemService.deleteSystem(systemId);
   }
 
   @Get('getSystemByurlName/:urlName')
@@ -34,9 +35,9 @@ export class SystemController {
     return this.systemService.getSystemByUrlName(urlName);
   }
 
-  @Get(':id')
-  getSystemById(@Param('id') systemId: string) {
-    return this.systemService.getSystemById(systemId);
+  @Get(':managerId')
+  getSystemBymanagerId(@Param('managerId') managerId: string) {
+    return this.systemService.getSystemBymanagerId(managerId);
   }
 
   @Get()

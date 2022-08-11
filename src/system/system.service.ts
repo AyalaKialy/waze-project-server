@@ -12,17 +12,19 @@ export class SystemService {
 
   //post
   async createSystem(system: System) {
-    await (await this.systemModel.create(system)).save();
+    return await (await this.systemModel.create(system)).save();
   }
 
   //put
   async updateSystem(systemId: string, sustem: System) {
-    await (await this.systemModel.findByIdAndUpdate(systemId, sustem)).save();
+    return await (
+      await this.systemModel.findByIdAndUpdate(systemId, sustem)
+    ).save();
   }
 
   //delete
   async deleteSystem(systemId: string) {
-    await (await this.systemModel.findByIdAndDelete(systemId)).save();
+    return await (await this.systemModel.findByIdAndDelete(systemId)).save();
   }
 
   //get
@@ -31,9 +33,8 @@ export class SystemService {
   }
 
   //get
-  async getSystemById(systemId: string) {
-    //ObjectId לבדוק אם צריך המרה ל
-    return await this.systemModel.findOne({ _id: systemId }).exec();
+  async getSystemBymanagerId(managerId: string) {
+    return await this.systemModel.find({ managerId }).exec();
   }
 
   //get
