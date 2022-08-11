@@ -17,7 +17,8 @@ export class UserController {
 
   @Post()
   createUser(@Body() newUser: User) {
-    this.userService.createUser(newUser);
+    debugger;
+    return this.userService.createUser(newUser);
   }
 
   @Put(':id')
@@ -28,6 +29,15 @@ export class UserController {
   @Delete(':id')
   deleteUser(@Param('id') userId: string) {
     this.userService.deleteUser(userId);
+  }
+  @Get(':uid')
+  getUserByUid(@Param('uid') uid: string) {
+    return this.userService.getUserByUid(uid);
+  }
+
+  @Get('getUserByEmail/:email')
+  getUserByEmail(@Param('email') email: string) {
+    return this.userService.getUserByEmail(email);
   }
 
   @Get('getUserById/:id')

@@ -9,7 +9,7 @@ export class UserService {
 
     //post
     async createUser(user: User) {
-        await (await this.userModel.create(user)).save();
+        return await (await this.userModel.create(user)).save();
     }
 
     //put
@@ -20,6 +20,17 @@ export class UserService {
     //delete
     async deleteUser(userId: string) {
         await (await this.userModel.findByIdAndDelete(userId)).save();
+    }
+
+
+    //get
+    async getUserByUid(uid: string) {
+        return await this.userModel.findOne({ uid }).exec();
+    }
+
+    //get
+    async getUserByEmail(email: string) {
+        return await this.userModel.findOne({ email }).exec();
     }
 
     //get
