@@ -5,42 +5,40 @@ import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
 export class UserService {
-    constructor(@InjectModel('User') private readonly userModel: Model<User>) { }
+  constructor(@InjectModel('User') private readonly userModel: Model<User>) { }
 
-    //post
-    async createUser(user: User) {
-        console.log('createUser(user)');
-        return await (await this.userModel.create(user)).save();
-    }
+  //post
+  async createUser(user: User) {
+    await this.userModel.create(user);
+  }
 
-    //put
-    async updateUser(userId: string, user: User) {
-        await (await this.userModel.findByIdAndUpdate(userId, user)).save();
-    }
+  //put
+  async updateUser(userId: string, user: User) {
+    await this.userModel.findByIdAndUpdate(userId, user);
+  }
 
-    //delete
-    async deleteUser(userId: string) {
-        await (await this.userModel.findByIdAndDelete(userId)).save();
-    }
+  //delete
+  async deleteUser(userId: string) {
+    await this.userModel.findByIdAndDelete(userId);
+  }
 
+  //get
+  async getUserByUId(uid: string): Promise<User> {
+    return await this.userModel.findOne({ uid });
+  }
 
-    //get
-    async getUserByUid(uid: string) {
-        return await this.userModel.findOne({ uid }).exec();
-    }
+  async getUserById(id: string): Promise<User> {
+    return await this.userModel.findOne({ _id: id });
+  }
 
-    //get
-    async getUserByEmail(email: string) {
-        return await this.userModel.findOne({ email }).exec();
-    }
+  //get
+  async getUsers() {
+    return await this.userModel.find().exec();
+  }
 
-    //get
-    async getUserById(userId: string) {
-        return await this.userModel.findOne({ _id: userId }).exec();
-    }
-
-    //get
-    async getUsers() {
-        return await this.userModel.find().exec();
-    }
+  // const createdUser = new this.userModel({
+  //   name: user.name,
+  //   email: user.email
+  // });
+  // await createdUser.save();
 }

@@ -8,7 +8,7 @@ import { ObjectId } from 'mongodb';
 export class SystemService {
   constructor(
     @InjectModel('System') private readonly systemModel: Model<System>,
-  ) {}
+  ) { }
 
   //post
   async createSystem(system: System) {
@@ -24,7 +24,7 @@ export class SystemService {
 
   //delete
   async deleteSystem(systemId: string) {
-    return await (await this.systemModel.findByIdAndDelete(systemId)).save();
+    return await (await this.systemModel.findByIdAndDelete(systemId));
   }
 
   //get
