@@ -16,7 +16,6 @@ export class SystemController {
 
   @Post()
   createSystem(@Body() newSystem: System) {
-    //מידלוואר
     return this.systemService.createSystem(newSystem);
   }
 

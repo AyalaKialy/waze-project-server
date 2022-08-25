@@ -6,18 +6,18 @@ import {
   Param,
   Post,
   Put,
-  Query,
+  Req,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.model';
-import { query } from 'express';
+import { Request } from 'express';
 @Controller('user')
 export class UserController {
   constructor(private userService: UserService) { }
 
   @Post()
   createUser(@Body() newUser: User) {
-    debugger;
+    console.log('createUser');
     return this.userService.createUser(newUser);
   }
 
