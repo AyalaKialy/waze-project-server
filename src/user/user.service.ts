@@ -9,6 +9,7 @@ export class UserService {
 
     //post
     async createUser(user: User) {
+        console.log('createUser(user)');
         return await (await this.userModel.create(user)).save();
     }
 

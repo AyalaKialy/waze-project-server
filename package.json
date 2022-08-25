@@ -21,6 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@firebase/firestore": "^3.4.14",
     "@nestjs/common": "^9.0.8",
     "@nestjs/core": "^9.0.7",
     "@nestjs/mongoose": "^9.2.0",
@@ -28,10 +29,14 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "firebase": "^9.9.3",
+    "firebase-admin": "^11.0.1",
     "mongoose": "^6.5.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.5.6"
+    "rxjs": "^7.5.6",
+    "save": "^2.5.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
