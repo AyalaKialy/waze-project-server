@@ -13,7 +13,7 @@ import { User } from './user.model';
 import { query } from 'express';
 @Controller('user')
 export class UserController {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
   @Post()
   createUser(@Body() newUser: User) {
@@ -32,13 +32,13 @@ export class UserController {
   }
   @Get(':uid')
   getUserByUid(@Param('uid') uid: string) {
-    return this.userService.getUserByUid(uid);
+    return this.userService.getUserByUId(uid);
   }
 
-  @Get('getUserByEmail/:email')
-  getUserByEmail(@Param('email') email: string) {
-    return this.userService.getUserByEmail(email);
-  }
+  // @Get('getUserByEmail/:email')
+  // getUserByEmail(@Param('email') email: string) {
+  //   return this.userService.getUserByEmail(email);
+  // }
 
   @Get('getUserById/:id')
   getUserById(@Param('id') userId: string) {
