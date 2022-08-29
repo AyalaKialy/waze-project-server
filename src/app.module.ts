@@ -8,18 +8,22 @@ import { UserModule } from './user/user.module';
 import { SystemModule } from './system/system.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AuthMiddleware } from './auth/auth.middleware';
+import { ManagerModule } from './manager/manager.module';
+import { RequestModule } from './request/request.module';
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/finalProject_DB'),
     UserModule,
     SystemModule,
+    ManagerModule,
+    RequestModule
   ],
   controllers: [],
   providers: [],
 })
 export class AppModule implements NestModule {
-
+  
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(AuthMiddleware).forRoutes({
       path: '*',

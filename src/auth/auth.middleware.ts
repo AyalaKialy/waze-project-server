@@ -13,7 +13,8 @@ import {
   doc,
   getDocs,
 } from 'firebase/firestore';
-
+import { UserService } from 'src/user/user.service';
+import { ManagerService } from 'src/manager/manager.service';
 
 const config = {
   apiKey: 'AIzaSyBk-gdTc1sB3rJuXTDIBFdpLc3k1KwSTpc',
@@ -41,7 +42,8 @@ const firebase_params = {
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
   private defaultApp: any;
-  private db: any;
+  private managerService: ManagerService;
+  private userService: UserService;
   constructor() {
     this.defaultApp = firebase.initializeApp({
       credential: firebase.credential.cert(firebase_params),
@@ -49,7 +51,7 @@ export class AuthMiddleware implements NestMiddleware {
     });
   }
 
-  use(req: Request, res: Response, next: NextFunction) {
+  use(req: Request, res: Response, next: Function) {
     console.log('wow1' + req.body);
     const token = req.headers.authorization;
     if (token != null && token != '') {
@@ -62,7 +64,14 @@ export class AuthMiddleware implements NestMiddleware {
           console.log(decodedToken);
           const uid = await decodedToken.uid;
           console.log(uid);
+          // const user = await this.userService.getUserByUId(uid);
+          // // const manager =
+          // //   await this.managerService.getManagerByUserIdAndSystemId(user.id,);
+          // if (uid === user.uid) {
           next();
+          // } else {
+          //   alert('user not access');
+          // }
         })
         .catch(() => {
           this.accessDenied(req.url, res);
