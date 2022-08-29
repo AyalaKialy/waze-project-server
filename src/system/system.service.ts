@@ -24,7 +24,7 @@ export class SystemService {
 
   //delete
   async deleteSystem(systemId: string) {
-    return await (await this.systemModel.findByIdAndDelete(systemId));
+    await this.systemModel.findByIdAndDelete(systemId);
   }
 
   //get
