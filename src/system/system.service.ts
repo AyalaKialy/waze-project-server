@@ -2,7 +2,6 @@ import { Model } from 'mongoose';
 import { Injectable, Inject } from '@nestjs/common';
 import { System } from './system.model';
 import { InjectModel } from '@nestjs/mongoose';
-import { ObjectId } from 'mongodb';
 
 @Injectable()
 export class SystemService {
