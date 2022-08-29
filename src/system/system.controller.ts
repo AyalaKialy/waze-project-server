@@ -12,11 +12,10 @@ import { System } from './system.model';
 
 @Controller('system')
 export class SystemController {
-  constructor(private systemService: SystemService) {}
+  constructor(private systemService: SystemService) { }
 
   @Post()
   createSystem(@Body() newSystem: System) {
-    //מידלוואר
     return this.systemService.createSystem(newSystem);
   }
 
@@ -27,7 +26,7 @@ export class SystemController {
 
   @Delete(':id')
   deleteSystem(@Param('id') systemId: string) {
-    return this.systemService.deleteSystem(systemId);
+    this.systemService.deleteSystem(systemId);
   }
 
   @Get('getSystemByurlName/:urlName')
