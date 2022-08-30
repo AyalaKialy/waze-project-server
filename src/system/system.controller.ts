@@ -21,7 +21,8 @@ export class SystemController {
 
   @Put(':id')
   updateSystem(@Param('id') systemId: string, @Body() updateSystem: System) {
-    return this.systemService.updateSystem(systemId, updateSystem);
+    console.log('updateSystem');
+    this.systemService.updateSystem(systemId, updateSystem);
   }
 
   @Delete(':id')

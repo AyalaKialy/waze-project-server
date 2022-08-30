@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import {
+    Body,
+    Controller,
+    Delete,
+    Get,
+    Param,
+    Post,
+    Put,
+} from '@nestjs/common';
 import { LocationService } from './location.service';
 import { Location } from './location.model';
 
@@ -31,3 +39,4 @@ export class LocationController {
         return this.locationService.getLocations();
     }
 }
+

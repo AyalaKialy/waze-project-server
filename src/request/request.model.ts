@@ -1,7 +1,6 @@
 import { IsEmail, IsNotEmpty, IsString, IsEnum, Length } from 'class-validator';
 import mongoose from 'mongoose';
 import { User, UserSchema } from '../user/user.model';
-import { ObjectId } from 'mongodb';
 
 export enum Status {
   sent,
