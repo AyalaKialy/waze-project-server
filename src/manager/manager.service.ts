@@ -6,22 +6,22 @@ import { InjectModel } from '@nestjs/mongoose';
 @Injectable()
 export class ManagerService {
   constructor(
-    @InjectModel('Manager') private readonly ManagerService: Model<Manager>,
+    @InjectModel('Manager') private readonly managerService: Model<Manager>,
   ) {}
 
   //post
   async createManager(manager: Manager) {
-    return await (await this.ManagerService.create(manager)).save();
+    return await (await this.managerService.create(manager)).save();
   }
 
   //put
   async updateManager(id: string, manager: Manager) {
-    await (await this.ManagerService.findByIdAndUpdate(id, manager)).save();
+    await (await this.managerService.findByIdAndUpdate(id, manager)).save();
   }
 
   //delete
   async deleteManager(userId: string) {
-    await this.ManagerService.findByIdAndDelete(userId);
+    await this.managerService.findByIdAndDelete(userId);
   }
 
   //get
@@ -30,12 +30,12 @@ export class ManagerService {
     systemId: string,
   ): Promise<Role> {
     return await (
-      await this.ManagerService.findOne({ userId, systemId })
+      await this.managerService.findOne({ userId, systemId })
     ).role;
   }
 
   //getAll
   async getManagers() {
-    return await this.ManagerService.find().exec();
+    return await this.managerService.find().exec();
   }
 }

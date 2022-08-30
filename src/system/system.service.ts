@@ -16,9 +16,7 @@ export class SystemService {
 
   //put
   async updateSystem(systemId: string, sustem: System) {
-    return await (
-      await this.systemModel.findByIdAndUpdate(systemId, sustem)
-    ).save();
+    await (await this.systemModel.findByIdAndUpdate(systemId, sustem)).save();
   }
 
   //delete
