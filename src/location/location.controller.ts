@@ -29,9 +29,9 @@ export class LocationController {
         return this.locationService.deleteLocation(locationId);
     }
 
-    @Get(':managerId')
-    getLocationBymanagerId(@Param('managerId') managerId: string) {
-        return this.locationService.getLocationBymanagerId(managerId);
+    @Get(':systemId')
+    getLocationBysystemId(@Param('systemId') systemId: string) {
+        return this.locationService.getLocationBysystemId(systemId);
     }
 
     @Get()

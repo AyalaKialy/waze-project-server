@@ -40,14 +40,10 @@ export class Location {
   @IsNotEmpty()
   @IsNumber()
   lng: number;
-  @IsNotEmpty()
-  @IsString()
   description: string;
   @IsNotEmpty()
   @IsString()
   name: string;
-  @IsNotEmpty()
-  @IsString()
   notes: string;
   @IsNotEmpty()
   @IsEmail()
