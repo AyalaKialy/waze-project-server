@@ -7,7 +7,7 @@ import { InjectModel } from '@nestjs/mongoose';
 export class LocationService {
   constructor(
     @InjectModel('Location') private readonly locationModel: Model<Location>,
-  ) {}
+  ) { }
 
   //post
   async createLoction(location: Location) {
@@ -24,8 +24,8 @@ export class LocationService {
     return await await this.locationModel.findByIdAndDelete(locationId);
   }
   //get
-  async getLocationBymanagerId(managerId: string) {
-    return await this.locationModel.find({ managerId }).exec();
+  async getLocationBysystemId(systemId: string) {
+    return await this.locationModel.find({ systemId }).exec();
   }
 
   //get

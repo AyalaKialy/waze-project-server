@@ -2,17 +2,7 @@ import { Injectable, NestMiddleware } from '@nestjs/common';
 import { NextFunction, Request, Response } from 'express';
 import * as firebase from 'firebase-admin';
 import * as serviceAccount from './firebaseServiceAccount.json';
-import {
-  getFirestore,
-  query,
-  getDoc,
-  collection,
-  where,
-  addDoc,
-  Firestore,
-  doc,
-  getDocs,
-} from 'firebase/firestore';
+import { getFirestore, query, getDoc, collection, where, addDoc, Firestore, doc, getDocs } from 'firebase/firestore';
 import { UserService } from 'src/user/user.service';
 import { ManagerService } from 'src/manager/manager.service';
 
@@ -52,7 +42,6 @@ export class AuthMiddleware implements NestMiddleware {
   }
 
   use(req: Request, res: Response, next: Function) {
-    console.log('wow1' + req.body);
     const token = req.headers.authorization;
     if (token != null && token != '') {
       console.log(`token: ${token}`);
