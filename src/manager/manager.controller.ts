@@ -14,7 +14,7 @@ import { Request } from 'express';
 
 @Controller('manager')
 export class ManagerController {
-  constructor(private managerService: ManagerService) {}
+  constructor(private managerService: ManagerService) { }
 
   @Post()
   createManager(@Body() newManager: Manager) {
@@ -34,18 +34,19 @@ export class ManagerController {
   deleteManager(@Param('id') id: string) {
     this.managerService.deleteManager(id);
   }
+
+  @Get('getManagerByUserId/:userId')
+  getManagerByUserId(@Param('userId') userId: string) {
+    return this.managerService.getManagerByUserId(userId);
+  }
+
   @Get(':userId/:systemId')
   getManagerById(
     @Param('userId') userId: string,
     @Param('systemId') systemId: string,
   ) {
-    return this.managerService.getRoleByUserIdAndSystemId(userId, systemId);
+    return this.managerService.getManagerByUserIdAndSystemId(userId, systemId);
   }
-
-  // @Get('getUserById/:id')
-  // getUserById(@Param('id') userId: string) {
-  //     return this.userService.getUserById(userId);
-  // }
 
   @Get()
   getAll() {
