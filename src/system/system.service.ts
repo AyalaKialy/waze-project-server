@@ -7,7 +7,7 @@ import { InjectModel } from '@nestjs/mongoose';
 export class SystemService {
   constructor(
     @InjectModel('System') private readonly systemModel: Model<System>,
-  ) { }
+  ) {}
 
   //post
   async createSystem(system: System) {
@@ -16,6 +16,7 @@ export class SystemService {
 
   //put
   async updateSystem(systemId: string, sustem: System) {
+    console.log('updateSystem');
     await (await this.systemModel.findByIdAndUpdate(systemId, sustem)).save();
   }
 

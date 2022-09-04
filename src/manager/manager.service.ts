@@ -7,7 +7,7 @@ import { InjectModel } from '@nestjs/mongoose';
 export class ManagerService {
   constructor(
     @InjectModel('Manager') private readonly managerService: Model<Manager>,
-  ) {}
+  ) { }
 
   //post
   async createManager(manager: Manager) {
@@ -25,13 +25,13 @@ export class ManagerService {
   }
 
   //get
-  async getRoleByUserIdAndSystemId(
-    userId: string,
-    systemId: string,
-  ): Promise<Role> {
-    return await (
-      await this.managerService.findOne({ userId, systemId })
-    ).role;
+  async getManagerByUserId(userId: string) {
+    return await await this.managerService.find({ userId });
+  }
+
+  //get
+  async getManagerByUserIdAndSystemId(userId: string, systemId: string) {
+    return await await this.managerService.findOne({ userId, systemId });
   }
 
   //getAll

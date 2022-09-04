@@ -2,7 +2,17 @@ import { Injectable, NestMiddleware } from '@nestjs/common';
 import { NextFunction, Request, Response } from 'express';
 import * as firebase from 'firebase-admin';
 import * as serviceAccount from './firebaseServiceAccount.json';
-import { getFirestore, query, getDoc, collection, where, addDoc, Firestore, doc, getDocs } from 'firebase/firestore';
+import {
+  getFirestore,
+  query,
+  getDoc,
+  collection,
+  where,
+  addDoc,
+  Firestore,
+  doc,
+  getDocs,
+} from 'firebase/firestore';
 import { UserService } from 'src/user/user.service';
 import { ManagerService } from 'src/manager/manager.service';
 
@@ -42,24 +52,34 @@ export class AuthMiddleware implements NestMiddleware {
   }
 
   use(req: Request, res: Response, next: Function) {
+    console.log('auth');
     const token = req.headers.authorization;
+    // const systemId = req.headers.systemId;
+    // const userId = req.headers.userId;
+    // console.log('userId: ' + userId, 'systemId: ' + systemId);
     if (token != null && token != '') {
       console.log(`token: ${token}`);
       this.defaultApp
         .auth()
         .verifyIdToken(token.replace('Bearer ', ''))
         .then(async (decodedToken) => {
-          console.log('wow2');
           console.log(decodedToken);
           const uid = await decodedToken.uid;
           console.log(uid);
-          // const user = await this.userService.getUserByUId(uid);
-          // // const manager =
-          // //   await this.managerService.getManagerByUserIdAndSystemId(user.id,);
-          // if (uid === user.uid) {
+          //1
+          // this.userService.getUserByUId(uid).then((data) => {
+          //   console.log(data);
+          // });
+          // //2 // לא תקין צריך לחשוב על דרך נוספת
+          // const manager =
+          //   await this.managerService.getManagerByUserIdAndSystemId(
+          //     String(userId),
+          //     String(systemId),
+          //   );
+          // if (user.uid === uid && manager.role === 0) {
           next();
           // } else {
-          //   alert('user not access');
+          //   this.accessDenied(req.url, res);
           // }
         })
         .catch(() => {
