@@ -1,9 +1,4 @@
-import {
-  Module,
-  MiddlewareConsumer,
-  NestModule,
-  RequestMethod,
-} from '@nestjs/common';
+import { Module, MiddlewareConsumer, NestModule, RequestMethod } from '@nestjs/common';
 import { UserModule } from './user/user.module';
 import { SystemModule } from './system/system.module';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -14,15 +9,8 @@ import { LocationModule } from './location/location.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://rivka:r325154359@cluster0.zpklj5y.mongodb.net/?retryWrites=true&w=majority',
-    ),
-    // mongodb://localhost:27017/finalProject_DB
-    // eXGGc6D6izHQ65Bb
-    UserModule,
-    SystemModule,
-    ManagerModule,
-    RequestModule,
+    MongooseModule.forRoot('mongodb://localhost:27017/finalProject_DB'),
+    UserModule, SystemModule, ManagerModule, RequestModule,
     LocationModule
   ],
   controllers: [],
