@@ -17,13 +17,11 @@ import { LocationModule } from './location/location.module';
     MongooseModule.forRoot(
       'mongodb+srv://rivka:r325154359@cluster0.zpklj5y.mongodb.net/?retryWrites=true&w=majority',
     ),
-    // mongodb://localhost:27017/finalProject_DB
-    // eXGGc6D6izHQ65Bb
     UserModule,
     SystemModule,
     ManagerModule,
     RequestModule,
-    LocationModule
+    LocationModule,
   ],
   controllers: [],
   providers: [],
