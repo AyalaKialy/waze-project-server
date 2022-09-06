@@ -36,8 +36,8 @@ export class SystemController {
   }
 
   @Get(':managerId')
-  getSystemBymanagerId(@Param('managerId') managerId: string) {
-    return this.systemService.getSystemBymanagerId(managerId);
+  getSystemsBymanagerId(@Param('managerId') managerId: string) {
+    return this.systemService.getSystemsByManagerId(managerId);
   }
 
   @Get()

@@ -31,7 +31,7 @@ export class SystemService {
   }
 
   //get
-  async getSystemBymanagerId(managerId: string) {
+  async getSystemsByManagerId(managerId: string) {
     return await this.systemModel.find({ managerId }).exec();
   }
 

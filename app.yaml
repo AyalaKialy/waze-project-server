@@ -1,0 +1,5 @@
+runtime: node.js14
+
+env_variables:
+ CONNECTION_STRING: 'mongodb+srv://rivka:r325154359@cluster0.zpklj5y.mongodb.net/?retryWrites=true&w=majority'
+
