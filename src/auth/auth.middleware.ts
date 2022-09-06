@@ -54,9 +54,9 @@ export class AuthMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: Function) {
     console.log('auth');
     const token = req.headers.authorization;
-    // const systemId = req.headers.systemId;
-    // const userId = req.headers.userId;
-    // console.log('userId: ' + userId, 'systemId: ' + systemId);
+    const { systemId } = req.params;
+    const userId = req.body.managerId;
+    console.log('userId: ' + userId, 'systemId: ' + systemId);
     if (token != null && token != '') {
       console.log(`token: ${token}`);
       this.defaultApp
@@ -67,20 +67,18 @@ export class AuthMiddleware implements NestMiddleware {
           const uid = await decodedToken.uid;
           console.log(uid);
           //1
-          // this.userService.getUserByUId(uid).then((data) => {
-          //   console.log(data);
-          // });
-          // //2 // לא תקין צריך לחשוב על דרך נוספת
-          // const manager =
-          //   await this.managerService.getManagerByUserIdAndSystemId(
-          //     String(userId),
-          //     String(systemId),
-          //   );
-          // if (user.uid === uid && manager.role === 0) {
-          next();
-          // } else {
-          //   this.accessDenied(req.url, res);
-          // }
+          const user = await this.userService.getUserByUId(uid);
+          //2 
+          const manager =
+            await this.managerService.getManagerByUserIdAndSystemId(
+              String(userId),
+              String(systemId),
+            );
+          if (user.uid === uid && manager.role === 0) {
+            next();
+          } else {
+            this.accessDenied(req.url, res);
+          }
         })
         .catch(() => {
           this.accessDenied(req.url, res);

@@ -9,9 +9,14 @@ import { LocationModule } from './location/location.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/finalProject_DB'),
-    UserModule, SystemModule, ManagerModule, RequestModule,
-    LocationModule
+    MongooseModule.forRoot(
+      'mongodb+srv://rivka:r325154359@cluster0.zpklj5y.mongodb.net/?retryWrites=true&w=majority',
+    ),
+    UserModule,
+    SystemModule,
+    ManagerModule,
+    RequestModule,
+    LocationModule,
   ],
   controllers: [],
   providers: [],
