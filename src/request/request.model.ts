@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsString, IsEnum, Length } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString, IsEnum, Length, IsNumber } from 'class-validator';
 import mongoose from 'mongoose';
 import { User, UserSchema } from '../user/user.model';
 
@@ -22,6 +22,8 @@ export const RequestSchema = new mongoose.Schema({
   display_name: { type: String, required: true },
   status: { type: String, enum: Status, required: true },
   notes: { type: String, required: false },
+  lat: { type: Number, required: true },
+  lng: { type: Number, required: true },
 });
 
 export class Request {
@@ -49,4 +51,10 @@ export class Request {
   status: Status;
   @IsString()
   notes: string;
+  @IsNotEmpty()
+  @IsNumber()
+  lat: number;
+  @IsNotEmpty()
+  @IsNumber()
+  lng: number;
 }

@@ -15,6 +15,7 @@ export const SystemSchema = new mongoose.Schema({
   urlName: { type: String, required: true, unique: true },
   email: { type: String, required: true },
   phone: { type: String, required: true },
+  systemUrl: { type: String, required: true },
 });
 
 export class System {
@@ -42,4 +43,7 @@ export class System {
   @IsString()
   @Length(9, 10)
   phone: string;
+  @IsNotEmpty()
+  @IsString()
+  systemUrl: string;
 }

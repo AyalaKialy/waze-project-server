@@ -30,6 +30,11 @@ export class ManagerService {
   }
 
   //get
+  async getManagerBySystemId(systemId: string) {
+    return await await this.managerService.findOne({ systemId });
+  }
+
+  //get
   async getManagerByUserIdAndSystemId(userId: string, systemId: string) {
     return await await this.managerService.findOne({ userId, systemId });
   }

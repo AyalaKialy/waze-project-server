@@ -35,6 +35,11 @@ export class ManagerController {
     this.managerService.deleteManager(id);
   }
 
+  // @Get('getManagerBySystemId/:systemId')
+  // getManagerBySystemId(@Param('systemId') systemId: string) {
+  //   return this.managerService.getManagerBySystemId(systemId);
+  // }
+
   @Get('getManagerByUserId/:userId')
   getManagerByUserId(@Param('userId') userId: string) {
     return this.managerService.getManagerByUserId(userId);

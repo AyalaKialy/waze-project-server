@@ -10,5 +10,6 @@ import { ManagerSchema } from './manager.model';
   ],
   controllers: [ManagerController],
   providers: [ManagerService],
+  exports: [ManagerService],
 })
 export class ManagerModule { }
