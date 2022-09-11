@@ -54,8 +54,8 @@ export class AuthMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: Function) {
     console.log('auth');
     const token = req.headers.authorization;
-    const { systemId } = req.params;
     const userId = req.body.managerId;
+    const { systemId } = req.params;
     console.log('userId: ' + userId, 'systemId: ' + systemId);
     if (token != null && token != '') {
       console.log(`token: ${token}`);
@@ -68,7 +68,7 @@ export class AuthMiddleware implements NestMiddleware {
           console.log(uid);
           //1
           const user = await this.userService.getUserByUId(uid);
-          //2 
+          //2
           const manager =
             await this.managerService.getManagerByUserIdAndSystemId(
               String(userId),
