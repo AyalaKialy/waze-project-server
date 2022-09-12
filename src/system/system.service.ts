@@ -7,7 +7,7 @@ import { InjectModel } from '@nestjs/mongoose';
 export class SystemService {
   constructor(
     @InjectModel('System') private readonly systemModel: Model<System>,
-  ) {}
+  ) { }
 
   //post
   async createSystem(system: System) {
@@ -33,6 +33,12 @@ export class SystemService {
   //get
   async getSystemsByManagerId(managerId: string) {
     return await this.systemModel.find({ managerId }).exec();
+  }
+
+  //get
+  async getSystemsBySearchWord(searchWord: string) {
+    return await this.systemModel.find({ $or: [{ topic: { '$regex': searchWord, '$options': 'i' } }, { description: { '$regex': searchWord, '$options': 'i' } }, { objectName: { '$regex': searchWord, '$options': 'i' } }] }).exec();
+
   }
 
   //get
