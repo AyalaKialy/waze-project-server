@@ -40,6 +40,10 @@ export class SystemController {
     return this.systemService.getSystemsByManagerId(managerId);
   }
 
+  @Get('getSystemBySearchWord/:searchWord')
+  getSystemsBySearchword(@Param('searchWord') searchWord: string) {
+    return this.systemService.getSystemsBySearchWord(searchWord);
+  }
   @Get()
   getAll() {
     return this.systemService.getSystems();

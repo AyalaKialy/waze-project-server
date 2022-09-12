@@ -18,7 +18,8 @@ import * as SendGrid from '@sendgrid/mail';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb+srv://rivka:r325154359@cluster0.zpklj5y.mongodb.net/?retryWrites=true&w=majority',
+      // 'mongodb+srv://rivka:r325154359@cluster0.zpklj5y.mongodb.net/?retryWrites=true&w=majority',
+      'mongodb://localhost:27017/finalProject_DB'
     ),
     ConfigModule.forRoot(),
     UserModule,
