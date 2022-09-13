@@ -21,7 +21,7 @@ import * as SendGrid from '@sendgrid/mail';
       // 'mongodb+srv://rivka:r325154359@cluster0.zpklj5y.mongodb.net/?retryWrites=true&w=majority',
       'mongodb://localhost:27017/finalProject_DB'
     ),
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({ envFilePath: './src/.env' }),
     UserModule,
     SystemModule,
     ManagerModule,

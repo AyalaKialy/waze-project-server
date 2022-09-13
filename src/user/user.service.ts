@@ -9,7 +9,7 @@ export class UserService {
 
   //post
   async createUser(user: User) {
-    await this.userModel.create(user);
+    return await this.userModel.create(user);
   }
 
   //put

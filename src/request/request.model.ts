@@ -10,6 +10,7 @@ export enum Status {
 }
 
 export const RequestSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   email: { type: String, required: true },
@@ -22,11 +23,16 @@ export const RequestSchema = new mongoose.Schema({
   display_name: { type: String, required: true },
   status: { type: String, enum: Status, required: true },
   notes: { type: String, required: false },
+  name: { type: String, required: true },
+  description: { type: String, required: true },
   lat: { type: Number, required: true },
   lng: { type: Number, required: true },
 });
 
 export class Request {
+  @IsNotEmpty()
+  @IsString()
+  userId: string;
   @IsNotEmpty()
   @IsString()
   firstName: string;
@@ -51,6 +57,12 @@ export class Request {
   status: Status;
   @IsString()
   notes: string;
+  @IsNotEmpty()
+  @IsString()
+  name: string;
+  @IsNotEmpty()
+  @IsString()
+  description: string;
   @IsNotEmpty()
   @IsNumber()
   lat: number;
