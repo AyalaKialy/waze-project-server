@@ -20,7 +20,7 @@ import * as SendGrid from '@sendgrid/mail';
     MongooseModule.forRoot(
       'mongodb+srv://rivka:r325154359@cluster0.zpklj5y.mongodb.net/?retryWrites=true&w=majority',
     ),
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({ envFilePath: './src/.env' }),
     UserModule,
     SystemModule,
     ManagerModule,

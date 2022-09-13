@@ -4,11 +4,13 @@ import {
   Delete,
   Get,
   Param,
+  Patch,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { RequestService } from './request.service';
-import { Request } from './request.model';
+import { Request, Status } from './request.model';
 
 @Controller('request')
 export class RequestController {
@@ -16,12 +18,18 @@ export class RequestController {
 
   @Post()
   createRequest(@Body() newRequest: Request) {
+    console.log('request controller');
     return this.requestService.createRequest(newRequest);
   }
 
   @Put(':id')
   updateRequest(@Param('id') Id: string, @Body() updateRequest: Request) {
     return this.requestService.updateRequest(Id, updateRequest);
+  }
+
+  @Patch(':id')
+  update(@Param('id') Id: string) {
+    return this.requestService.update(Id);
   }
 
   @Delete(':id')

@@ -19,7 +19,6 @@ export class UserController {
   createUser(@Body() newUser: User) {
     console.log('createUser');
     return this.userService.createUser(newUser);
-    
   }
 
   @Put(':id')
