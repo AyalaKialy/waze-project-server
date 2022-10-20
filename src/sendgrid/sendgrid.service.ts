@@ -8,12 +8,7 @@ import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
 export class SendgridService {
-  constructor() 
-  {
-    // Don't forget this one.
-    // The apiKey is required to authenticate our
-    // request to SendGrid API.
-    // this.configService.get<string>('SEND_GRID_KEY')
+  constructor() {
     SendGrid.setApiKey(process.env.SEND_GRID_KEY);
   }
 
